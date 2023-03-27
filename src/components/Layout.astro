@@ -1,0 +1,57 @@
+---
+interface Props {
+  pageTitle?: string;
+  pageDescription?: string;
+  styles?: string;
+}
+
+const { pageTitle, pageDescription, styles } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Solitreo&display=swap" rel="stylesheet">
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+  </head>
+  <body style={styles}>
+    <slot />
+
+    <style>
+      html::-webkit-scrollbar {
+        width: 10px;
+        background-color: #fdb3a4;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background-color: #b94958;
+        border-radius: 20px;
+      }
+
+      body {
+        background-color: #ffe6e0;
+        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.20'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        font-family: 'Solitreo', cursive;
+        animation: showAnimation 0.9s ease-out;
+      }
+
+      @keyframes showAnimation {
+        from {
+          opacity: 0;
+          background-color: white;
+          transform: translateY(80px);
+        }
+      }
+    </style>
+
+    <script
+      src="https://kit.fontawesome.com/cf9185ac1b.js"
+      crossorigin="anonymous"
+    ></script>
+
+  </body>
+</html>
